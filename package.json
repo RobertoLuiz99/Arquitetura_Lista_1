@@ -1,0 +1,16 @@
+{
+  "name": "lista1_arquitetura",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "Roberto Raposo",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "jasmine": "^3.8.0"
+  }
+}
+
