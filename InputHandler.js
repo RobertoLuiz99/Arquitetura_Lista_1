@@ -15,4 +15,4 @@ class InputHandler {
   }
 }
 
-module.exports = InputHandler; 
+module.exports = InputHandler;

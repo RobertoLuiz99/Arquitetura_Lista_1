@@ -9,31 +9,12 @@ const buscaStrategy = new BuscaContatoPorNome();
 const gerenciadorContatos = new GerenciadorContatos(contatoFactory, buscaStrategy);
 
 async function iniciar() {
-  Menu.exibir();
-  const opcao = await InputHandler.selecionarOpcao();
-
-  switch (opcao) {
-    case '1':
-      await adicionarContato();
-      break;
-    case '2':
-      await removerContato();
-      break;
-    case '3':
-      listarContatos();
-      break;
-    case '4':
-      await buscarContatoPorNome();
-      break;
-    case '5':
-      console.log('Saindo...');
-      process.exit(0);
-    default:
-      console.log('Opção inválida!');
+    while (true) {
+      Menu.exibir();
+      const opcao = await InputHandler.selecionarOpcao();
+      await processarOpcao(opcao);
+    }
   }
-
-  iniciar(); // Chamada recursiva para exibir o menu novamente
-}
 
 async function adicionarContato() {
   const nome = await solicitarInput('Nome: ');
@@ -74,10 +55,34 @@ async function exibirResultadoBusca(nome) {
   await aguardarConfirmacao();
 }
 
-async function aguardarConfirmacao() {
-  const confirmacao = await solicitarInput('Pressione Enter para retornar ao menu.');
-  iniciar();
-}
+async function processarOpcao(opcao) {
+    switch (opcao) {
+      case '1':
+        await adicionarContato();
+        break;
+      case '2':
+        await removerContato();
+        break;
+      case '3':
+        listarContatos();
+        break;
+      case '4':
+        await buscarContatoPorNome();
+        break;
+      case '5':
+        console.log('Saindo...');
+        process.exit(0);
+      default:
+        console.log('Opção inválida!');
+    }
+  }
+
+  async function aguardarConfirmacao() {
+    await solicitarInput('Pressione Enter para retornar ao menu.');
+    Menu.exibir();
+    const opcao = await InputHandler.selecionarOpcao();
+    await processarOpcao(opcao);
+  }
 
 function solicitarInput(pergunta) {
   const readline = require('readline');

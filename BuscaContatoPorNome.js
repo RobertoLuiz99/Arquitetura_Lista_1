@@ -1,8 +1,7 @@
-const BuscaContatoStrategy = require('./BuscaContatoStrategy');
-
-class BuscaContatoPorNome extends BuscaContatoStrategy {
+class BuscaContatoPorNome {
   buscarContato(contatos, nome) {
-    return contatos.find(contato => contato.nome.toLowerCase() === nome.toLowerCase());
+    const contatosEncontrados = contatos.filter(contato => contato.nome.toLowerCase() === nome.toLowerCase());
+    return contatosEncontrados.length > 0 ? contatosEncontrados[0] : null;
   }
 }
 
