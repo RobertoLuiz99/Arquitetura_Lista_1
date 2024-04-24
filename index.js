@@ -76,7 +76,7 @@ async function exibirResultadoBusca(nome) {
 
 async function aguardarConfirmacao() {
   const confirmacao = await solicitarInput('Pressione Enter para retornar ao menu.');
-  iniciar(); // Retorna ao menu após a confirmação
+  iniciar();
 }
 
 function solicitarInput(pergunta) {

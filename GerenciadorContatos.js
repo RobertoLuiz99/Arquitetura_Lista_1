@@ -11,7 +11,7 @@ class GerenciadorContatos {
   }
 
   removerContato(nome) {
-    this.contatos = this.contatos.filter(contato => contato.nome !== nome); // Correção aqui
+    this.contatos = this.contatos.filter(contato => contato.nome !== nome);
   }
 
   listarContatos() {
@@ -19,7 +19,6 @@ class GerenciadorContatos {
   }
 
   buscarContato(nome) {
-    // Verifica se a estratégia de busca possui o método buscarContato
     if (typeof this.estrategiaBusca.buscarContato === 'function') {
       return this.estrategiaBusca.buscarContato(this.contatos, nome);
     } else {
